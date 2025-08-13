@@ -18,6 +18,7 @@ def handle_client(client_socket, addr):
 
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # чтобы избежать ошибки адреса занятости
     server.bind(('0.0.0.0', 8080))
     server.listen(5)
     print("Server listening on port 8080")
